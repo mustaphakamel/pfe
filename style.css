@@ -1,0 +1,828 @@
+/* ============================================================
+   OASIS Dashboard — style.css
+   Sections:
+     1. Reset & CSS Variables
+     2. Base / Body
+     3. Sidebar
+     4. Topbar
+     5. Content Layout
+     6. Top Row Panels (Product / Image / Price)
+     7. Table Section
+     8. Pagination
+     9. Modals & Forms
+    10. Upload Area
+    11. Animations
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+
+/* ── 1. Reset & CSS Variables ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Brand colors */
+  --green:       #00D09C;
+  --green-dark:  #00A97E;
+  --green-light: #E0FAF4;
+  --red:         #E53935;
+
+  /* UI colors */
+  --bg:     #EDF1F7;
+  --white:  #FFFFFF;
+  --text:   #1A1A2E;
+  --muted:  #8A94A6;
+  --border: #E4E9F2;
+
+  /* Status badge colors */
+  --paid-bg: #D5F5EC;
+  --paid-fg: #00A97E;
+  --pend-bg: #EBEBEB;
+  --pend-fg: #888888;
+
+  /* Layout */
+  --sidebar-width: 220px;
+  --radius:        16px;
+}
+
+
+/* ── 2. Base / Body ── */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+}
+
+
+/* ── 3. Sidebar ── */
+.sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  border-right: 1px solid var(--border);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+/* Nav */
+.nav {
+  margin-top: 24px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  color: var(--green);
+  background: var(--green-light);
+}
+
+.nav-item.active {
+  color: var(--green);
+  border-left-color: var(--green);
+  background: var(--green-light);
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-left: auto;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Security card */
+.sec-card {
+  margin: 20px 16px 0;
+  background: var(--green);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+  color: white;
+}
+
+.sec-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.sec-card h4 {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.sec-card p {
+  font-size: 11px;
+  opacity: 0.9;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.sec-card button {
+  width: 100%;
+  padding: 9px;
+  background: white;
+  color: var(--green);
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.sec-card button:hover {
+  background: #f0f0f0;
+}
+
+
+/* ── 4. Topbar ── */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  background: var(--white);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar-greeting h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.topbar-greeting span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  max-width: 420px;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  width: 100%;
+}
+
+.search-bar input::placeholder {
+  color: var(--muted);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.notif-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 6px 14px 6px 6px;
+}
+
+.user-chip span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+}
+
+
+/* ── 5. Content Layout ── */
+.content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr 220px 240px;
+  gap: 16px;
+}
+
+
+/* ── 6. Top Row Panels ── */
+
+/* Product panel */
+.product-panel {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+}
+
+.product-panel h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.product-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.product-name-display {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.product-desc-display {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.product-empty {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Image panel */
+.image-panel {
+  background: var(--white);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  min-height: 180px;
+}
+
+.image-panel img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Price panel */
+.price-panel {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.coin-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFF3CD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.plus-badge {
+  background: var(--green);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.price-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.price-value {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+
+/* ── 7. Table Section ── */
+.table-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.table-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: left;
+  padding: 0 16px 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr {
+  transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+  background: #f9fbff;
+}
+
+tbody td {
+  font-size: 14px;
+  color: var(--text);
+  padding: 13px 16px 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr.row-highlight {
+  background: var(--green-light);
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: 5px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 90px;
+  text-align: center;
+}
+
+.badge-paid    { background: var(--paid-bg); color: var(--paid-fg); }
+.badge-pending { background: var(--pend-bg); color: var(--pend-fg); }
+
+/* Action buttons row */
+.btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-add,
+.btn-del {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-add:active,
+.btn-del:active {
+  transform: scale(0.97);
+}
+
+.btn-add         { background: var(--green); color: white; }
+.btn-add:hover   { background: var(--green-dark); }
+.btn-del         { background: var(--red); color: white; }
+.btn-del:hover   { background: #c62828; }
+
+
+/* ── 8. Pagination ── */
+.pagination {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-prev {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.page-prev:hover { background: var(--bg); }
+
+.page-next {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.page-next:hover { background: var(--green-light); }
+
+.next-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ── 9. Modals & Forms ── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay.open {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  width: 480px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* 2-column form row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Individual field */
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  outline: none;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--green);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 65px;
+}
+
+/* Modal buttons */
+.modal-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.modal-btns button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-confirm           { background: var(--green); color: white; }
+.btn-confirm:hover     { background: var(--green-dark); }
+.btn-cancel            { background: var(--bg); color: var(--muted); border: 1px solid var(--border) !important; }
+.btn-del-confirm       { background: var(--red) !important; color: white !important; }
+.btn-del-confirm:hover { background: #c62828 !important; }
+
+/* Delete modal select */
+.delete-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  outline: none;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.delete-select:focus { border-color: var(--green); }
+
+
+/* ── 10. Upload Area ── */
+.upload-area {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.upload-area:hover,
+.upload-area.has-file {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+
+.upload-area input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-area p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.upload-area.has-file p {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.upload-preview {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 0 auto 6px;
+  display: block;
+}
+
+
+/* ── 11. Animations ── */
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  40%       { opacity: 0.35; }
+}
+
+.flash {
+  animation: flash 0.5s ease;
+}
+
+
+/* ── Utility classes used by app.js ── */
+.table-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px;
+  font-style: italic;
+}
+
+.td-muted { color: var(--muted); }
+.td-bold  { font-weight: 700; }
+
+
+/* Selected row highlight */
+tbody tr.row-selected {
+  background: var(--green-light);
+  cursor: pointer;
+}
+
+.page-num-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.page-num-btn:hover   { background: var(--bg); color: var(--text); }
+.page-num-active      { background: var(--green) !important; color: white !important; border-color: var(--green) !important; }

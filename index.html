@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OASIS Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SIDEBAR
+       ============================================================ -->
+  <aside class="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+      <div class="logo-icon">J</div>
+      <span class="logo-text">OASIS</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+
+      <div class="nav-item active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <rect x="3"  y="3"  width="7" height="7" rx="1"/>
+          <rect x="14" y="3"  width="7" height="7" rx="1"/>
+          <rect x="3"  y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        Dashboard
+        <span class="nav-dot"></span>
+      </div>
+
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 8v4l3 3"/>
+        </svg>
+        Exchange
+      </div>
+
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+        </svg>
+        Library
+      </div>
+
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <path d="M16 2v4M8 2v4M3 10h18"/>
+        </svg>
+        Schedules
+      </div>
+
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+        </svg>
+        Payouts
+      </div>
+
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M20 21a8 8 0 10-16 0"/>
+        </svg>
+        Settings
+      </div>
+
+    </nav><!-- /nav -->
+
+    <!-- Security card -->
+    <div class="sec-card">
+      <div class="sec-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <h4>Keep you safe!</h4>
+      <p>Update your security password, keep your account safe!</p>
+      <button onclick="alert('Redirecting to privacy settings…')">Update Privacy</button>
+    </div>
+
+  </aside><!-- /sidebar -->
+
+
+  <!-- ============================================================
+       MAIN CONTENT AREA
+       ============================================================ -->
+  <div class="main">
+
+    <!-- ── Topbar ── -->
+    <header class="topbar">
+
+      <div class="topbar-greeting">
+        <h2>Hello Mr Meeeeee</h2>
+        <span>4.45 pm 19 Jan 2022</span>
+      </div>
+
+      <div class="search-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A94A6" stroke-width="2.2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" placeholder="Search" oninput="filterTable(this.value)" />
+      </div>
+
+      <div class="topbar-right">
+        <div class="notif-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A94A6" stroke-width="2.2">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 01-3.46 0"/>
+          </svg>
+          <span class="notif-dot"></span>
+        </div>
+        <div class="user-chip">
+          <div class="avatar">M</div>
+          <span>Mr Meeeeeeeee</span>
+        </div>
+      </div>
+
+    </header><!-- /topbar -->
+
+
+    <!-- ── Page Content ── -->
+    <div class="content">
+
+      <!-- Top 3-panel row -->
+      <div class="top-row">
+
+        <!-- Product panel -->
+        <div class="product-panel">
+          <h3>PRODUCT:</h3>
+          <hr class="product-divider" />
+          <div id="productDisplay" class="product-empty">
+            No product added yet — click ADD below.
+          </div>
+        </div>
+
+        <!-- Image panel -->
+        <div class="image-panel" id="imagePanel">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9l4-4 4 4 4-4 4 4"/>
+              <circle cx="8.5" cy="14.5" r="1.5"/>
+            </svg>
+            <p style="font-size:12px; color:#bbb;">No image</p>
+          </div>
+        </div>
+
+        <!-- Price panel -->
+        <div class="price-panel">
+          <div class="price-top">
+            <div class="coin-icon">💰</div>
+            <span class="plus-badge" id="priceBadge">+0</span>
+          </div>
+          <div class="price-label">Recent Price :</div>
+          <div class="price-value" id="priceDisplay">— DA</div>
+        </div>
+
+      </div><!-- /top-row -->
+
+
+      <!-- Recent Products table -->
+      <div class="table-section">
+        <h3>Recent Products</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Product</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rows injected by app.js → renderTable() -->
+          </tbody>
+        </table>
+
+        <div class="btn-row">
+          <button class="btn-add" onclick="openAddModal()">ADD</button>
+          <button class="btn-del" onclick="openDeleteModal()">DELETE</button>
+        </div>
+      </div><!-- /table-section -->
+
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-prev" onclick="changePage(-1)">Previouse</button>
+        <span id="pageInfo" style="font-size:13px; color:var(--muted); font-weight:600;">Page 1</span>
+        <button class="page-next" onclick="changePage(1)">
+          Next
+          <div class="next-circle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+
+
+  <!-- ============================================================
+       MODAL — Add New Product
+       ============================================================ -->
+  <div class="overlay" id="addModal">
+    <div class="modal">
+
+      <h3>Add New Product</h3>
+
+      <!-- Image upload -->
+      <div class="field">
+        <label>Product Image</label>
+        <div class="upload-area" id="uploadArea">
+          <input type="file" accept="image/*" onchange="previewImage(this)" />
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <p>Click or drag an image here</p>
+        </div>
+      </div>
+
+      <!-- Row 1: name + price -->
+      <div class="form-row">
+        <div class="field">
+          <label>Product Name *</label>
+          <input id="addName" type="text" placeholder="e.g. Air Max 90" />
+        </div>
+        <div class="field">
+          <label>Price (DA) *</label>
+          <input id="addPrice" type="number" placeholder="e.g. 1500" />
+        </div>
+      </div>
+
+      <!-- Row 2: customer + date -->
+      <div class="form-row">
+        <div class="field">
+          <label>Customer Name *</label>
+          <input id="addCustomer" type="text" placeholder="e.g. Jessica S." />
+        </div>
+        <div class="field">
+          <label>Date *</label>
+          <input id="addDate" type="text" placeholder="DD.MM.YYYY" />
+        </div>
+      </div>
+
+      <!-- Row 3: amount + status -->
+      <div class="form-row">
+        <div class="field">
+          <label>Amount ($) *</label>
+          <input id="addAmount" type="text" placeholder="e.g. $124.97" />
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="addStatus">
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="field">
+        <label>Description (optional)</label>
+        <textarea id="addDesc" placeholder="Short product description…"></textarea>
+      </div>
+
+      <div class="modal-btns">
+        <button class="btn-confirm" onclick="confirmAdd()">Save Product</button>
+        <button class="btn-cancel"  onclick="closeModals()">Cancel</button>
+      </div>
+
+    </div>
+  </div><!-- /addModal -->
+
+
+  <!-- ============================================================
+       MODAL — Delete Record
+       ============================================================ -->
+  <div class="overlay" id="deleteModal">
+    <div class="modal">
+
+      <h3>Delete a Record</h3>
+      <p class="modal-desc">
+        Select the record to remove. This action cannot be undone.
+      </p>
+
+      <div class="field">
+        <label>Select record</label>
+        <select id="deleteSelect" class="delete-select"></select>
+      </div>
+
+      <div class="modal-btns">
+        <button class="btn-del-confirm" onclick="confirmDelete()">Delete</button>
+        <button class="btn-cancel"      onclick="closeModals()">Cancel</button>
+      </div>
+
+    </div>
+  </div><!-- /deleteModal -->
+
+<div class="pagination">
+  <button class="page-prev" onclick="changePage(-1)">Previouse</button>
+
+  <div id="paginationNumbers" style="display:flex; gap:6px; align-items:center;"></div>
+
+  <span id="pageInfo" style="font-size:13px; color:var(--muted); font-weight:600;"></span>
+
+  <button class="page-next" onclick="changePage(1)">
+    Next
+    <div class="next-circle">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </div>
+  </button>
+</div>
+
+  <!-- ── JavaScript ── -->
+  <script src="app.js"></script>
+
+</body>
+</html>
