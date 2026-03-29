@@ -473,3 +473,5 @@ function openDeleteModal() {
     rows.length ? updatePanels(rows[0]) : clearPanels();
   }
 }
+
+

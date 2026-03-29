@@ -100,7 +100,7 @@
 
       <div class="topbar-greeting">
         <h2>Hello Mr Meeeeee</h2>
-        <span>4.45 pm 19 Jan 2022</span>
+        <span id="liveDateTime"></span>
       </div>
 
       <div class="search-bar">
@@ -177,7 +177,7 @@
             <tr>
               <th>Name</th>
               <th>Product</th>
-              <th>Date</th>
+              <th>Added At</th>
               <th>Amount</th>
               <th>Status</th>
             </tr>
@@ -189,24 +189,18 @@
 
         <div class="btn-row">
           <button class="btn-add" onclick="openAddModal()">ADD</button>
-          <button class="btn-del" onclick="openDeleteModal()">DELETE</button>
+          <button class="btn-del" onclick="deleteSelectedProduct()">DELETE</button>
         </div>
       </div><!-- /table-section -->
 
 
-      <!-- Pagination -->
-      <div class="pagination">
-        <button class="page-prev" onclick="changePage(-1)">Previouse</button>
-        <span id="pageInfo" style="font-size:13px; color:var(--muted); font-weight:600;">Page 1</span>
-        <button class="page-next" onclick="changePage(1)">
-          Next
-          <div class="next-circle">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3">
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </div>
-        </button>
-      </div>
+      <!-- Pagination (fixed) 
+      <div class="pagination" style="display: flex; justify-content: center; gap: 20px; align-items: center; margin: 16px 0;">
+        <button class="page-prev" onclick="changePage(-1)" style="padding: 8px 20px;">Previous</button>
+        <div id="paginationNumbers" style="display: flex; gap: 6px; align-items: center;"></div>
+        <span id="pageInfo" style="font-size:13px; color:var(--muted); font-weight:600;"></span>
+        <button class="page-next" onclick="changePage(1)" style="padding: 8px 20px;">Next</button>
+      </div> -->
 
     </div><!-- /content -->
   </div><!-- /main -->
@@ -254,7 +248,7 @@
         </div>
         <div class="field">
           <label>Date *</label>
-          <input id="addDate" type="text" placeholder="DD.MM.YYYY" />
+           <input id="addDate" type="text" placeholder="DD.MM.YYYY" />
         </div>
       </div>
 
@@ -287,50 +281,8 @@
     </div>
   </div><!-- /addModal -->
 
-
-  <!-- ============================================================
-       MODAL — Delete Record
-       ============================================================ -->
-  <div class="overlay" id="deleteModal">
-    <div class="modal">
-
-      <h3>Delete a Record</h3>
-      <p class="modal-desc">
-        Select the record to remove. This action cannot be undone.
-      </p>
-
-      <div class="field">
-        <label>Select record</label>
-        <select id="deleteSelect" class="delete-select"></select>
-      </div>
-
-      <div class="modal-btns">
-        <button class="btn-del-confirm" onclick="confirmDelete()">Delete</button>
-        <button class="btn-cancel"      onclick="closeModals()">Cancel</button>
-      </div>
-
-    </div>
-  </div><!-- /deleteModal -->
-
-<div class="pagination">
-  <button class="page-prev" onclick="changePage(-1)">Previouse</button>
-
-  <div id="paginationNumbers" style="display:flex; gap:6px; align-items:center;"></div>
-
-  <span id="pageInfo" style="font-size:13px; color:var(--muted); font-weight:600;"></span>
-
-  <button class="page-next" onclick="changePage(1)">
-    Next
-    <div class="next-circle">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3">
-        <path d="M9 18l6-6-6-6"/>
-      </svg>
-    </div>
-  </button>
-</div>
-
   <!-- ── JavaScript ── -->
-  <script src="app.js"></script>
+  <script src="new_script.js"></script>
 
 </body>
 </html>
