@@ -826,3 +826,27 @@ tbody tr.row-selected {
 
 .page-num-btn:hover   { background: var(--bg); color: var(--text); }
 .page-num-active      { background: var(--green) !important; color: white !important; border-color: var(--green) !important; }
+
+/* Make product name and description wrap inside the product panel */
+.product-name-display,
+.product-desc-display {
+  word-wrap: break-word;      /* break long words if needed */
+  overflow-wrap: break-word;  /* modern equivalent */
+  white-space: normal;        /* ensure text wraps */
+  max-width: 100%;            /* never exceed container */
+}
+
+/* Optional: limit description height and add scroll if you prefer */
+.product-desc-display {
+  max-height: 100px;          /* adjust as needed */
+  overflow-y: auto;           /* scroll if too long */
+}
+
+/* Ensure price text wraps inside the price panel */
+.price-value {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  line-height: 1.2;          /* optional: improves multi-line readability */
+}
